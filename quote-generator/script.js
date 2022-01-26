@@ -17,17 +17,13 @@ async function fetchQuote() {
   }
 }
 
-function getQuotesFromSession() {
-  return fetchQuote().then(quotes => quotes);
-}
-
 function tweetQuote() {
   const twitterQuoteUrl = `https://twitter.com/intent/tweet?text=${quoteEl.textContent} - ${quoteAuthorEl.textContent}`;
 
   window.open(twitterQuoteUrl, '_blank');
 }
 
-const quotesPromise = getQuotesFromSession();
+const quotesPromise = fetchQuote();
 const quoteEl = document.getElementById('quote');
 const quoteAuthorEl = document.getElementById('author');
 
